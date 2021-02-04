@@ -1,0 +1,55 @@
+<form [formGroup]="form" (ngSubmit)="submit()"> 
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Post Name</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="exampleFormControlInput1" 
+            placeholder="Post Name"
+            formControlName="title"
+        >
+        <div 
+            class="validation"
+            *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
+        >
+            <small *ngIf="form.get('title')?.errors?.required">
+            Введите название поста
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Post Author</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="exampleFormControlInput1" 
+            placeholder="Author name"
+            formControlName="author"
+        >
+        <div 
+            class="validation"
+            *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
+        >
+            <small *ngIf="form.get('author')?.errors?.required">
+            Введите автора поста
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Post data</label>
+        <textarea 
+        class="form-control" 
+        id="exampleFormControlTextarea1" 
+        formControlName="text"
+        rows="3"
+        ></textarea>
+    </div>
+
+    <button 
+    type="submit" 
+    class="btn btn-primary"
+    [disabled]="form.invalid"
+    >Опубликовать</button>
+</form>

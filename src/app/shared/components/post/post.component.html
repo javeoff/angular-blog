@@ -1,0 +1,8 @@
+<a [routerLink]="['/post', post.id]" class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ post.title }}</h5>
+        <small>{{ post.author }}</small>
+    </div>
+    <!-- <p class="mb-1">{{ post.text }}</p> -->
+    <button class="btn btn-light">Открыть пост</button>
+</a>

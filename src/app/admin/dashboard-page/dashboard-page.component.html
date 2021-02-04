@@ -1,0 +1,37 @@
+<div class="form-control search-control">
+    <input type="text" class="search" placeholder="Найти пост" [(ngModel)]="searchStr">
+</div>
+
+<div *ngIf="posts.length; else loading">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Автор</th>
+                <th>Название</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of posts | searchPosts:searchStr; let idx = index">
+                <td>{{ idx + 1 }}</td>
+                <td>{{ post.author }}</td>
+                <td>{{ post.title }}</td>
+                <td>
+                    <button 
+                    class="btn btn-link"
+                    [routerLink]="['/admin','post', post.id, 'edit']"
+                    >Редактировать</button>
+                    <button 
+                    class="btn btn-link btn-delete"
+                    (click)="remove(post.id!)"
+                    >Удалить</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #loading>
+    <p class="text-center">Загрузка...</p>
+</ng-template>

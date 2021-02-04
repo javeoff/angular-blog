@@ -1,0 +1,16 @@
+<div class="container" *ngIf="post$ | async as post; else loading">
+    <div class="card">
+        <div class="card-header">
+          {{ post.title }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ post.author }}</h5>
+          <p class="card-text">{{ post.text }}</p>
+          <a routerLink="/" class="btn btn-primary">Перейти на главную</a>
+        </div>
+      </div>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Загрузка поста</p>
+</ng-template>

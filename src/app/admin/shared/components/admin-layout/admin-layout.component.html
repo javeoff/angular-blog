@@ -1,0 +1,20 @@
+<app-alert></app-alert>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">Admin Page</a>
+        <ul 
+        *ngIf="auth.isAuthenticated()"
+        class="navbar-nav my-2 my-lg-0"
+        >
+            <li class="nav-item" routerLinkActive="active"><a [routerLink]="['/admin', 'dashboard']">Dashboard</a></li>
+            <li class="nav-item" routerLinkActive="active"><a [routerLink]="['/admin', 'create']">Create</a></li>
+            <li class="nav-item"><a href="#" (click)="logout($event)" >Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="wrap">
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</div>
